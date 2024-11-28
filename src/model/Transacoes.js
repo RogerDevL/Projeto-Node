@@ -1,28 +1,28 @@
-const [DataTypes] = require ('sequelize');
+const {DataTypes} = require ('sequelize');
 const sequelize = require('../config/database');
 const Contas = require('./Contas');
 
 const Transacoes = sequelize.define('Transacoes', {
     ID_Conta:{
-        type:DataTypes.STRING,
+        type:DataTypes.INTEGER,
         references:{
             Model:Contas,
             key:'id'
         }
     },
-    Tipo:{
+    tipo:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Tipo_Transacao:{
+    tipo_Transacao:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Valor:{
+    valor:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Data_Transacao:{
+    data_Transacao:{
         type:DataTypes.DATE,
         allowNull:false
     }

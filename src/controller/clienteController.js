@@ -4,8 +4,10 @@ const clienteController = {
     create: async (req, res) =>{
         try {
             const cliente = await clientesServices.create(req.body);
+            console.log(cliente)
             return res.status(200).json({msg:"Cliente criado", cliente})
         } catch (error) {
+            console.log(error)
             return res.status(500).json({msg:"Contate o suporte."})
         }
     },
@@ -23,7 +25,10 @@ const clienteController = {
     getAll:async(req, res) =>{
         try {
             const cliente = await clientesServices.getAll()
-            return res.status(200).json({msg:"Todos clientes."})
+            if(!cliente){
+                return res.status(400).json({msg:"Não contém clientes."})
+            }
+            return res.status(200).json({msg:"Todos clientes.", cliente})
         } catch (error) {
             return res.status(500).json({msg:"Contate o suporte"})
         }
@@ -34,6 +39,7 @@ const clienteController = {
             if(!cliente){
                 return res.status(400).json({msg:"Cliente não encontrado."})
             }
+            return res.status(200).json({msg:"Cliente:", cliente})
         } catch (error) {
             return res.status(500).json({msg:"Contate o suporte"})
         }
@@ -44,6 +50,7 @@ const clienteController = {
             if(!cliente){
                 return res.status(400).json({msg:"Cliente não encontrado."})
             }
+            return res.status(200).json({msg:"Cliente deletado", cliente})
         } catch (error) {
             return res.status(500).json({msg:"Contate o suporte."})
         }

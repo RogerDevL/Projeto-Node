@@ -1,11 +1,12 @@
 const Clientes = require("../model/Clientes")
 
 const clientesServices = {
-    create: async (cliente) =>{
+    create: async (cliente) => {
         try {
             return await Clientes.create(cliente);
         } catch (error) {
-            throw new Error ('Ocorreu um erro ao criar cliente.');
+            console.log(error)
+            throw new Error('Ocorreu um erro ao criar cliente.');
         }
     },
     update: async (id, clienteToUpdate) =>{
@@ -18,7 +19,7 @@ const clientesServices = {
             await cliente.save();
             return cliente;
         } catch (error) {
-            throw new Error ('Ocorreu um erro ao criar cliente.');
+            throw new Error ('Ocorreu um erro ao editar cliente.');
         }
     },
     getById: async (id) =>{
@@ -35,7 +36,10 @@ const clientesServices = {
     },
     getAll: async () =>{
         try {
-            return await Clientes.findAll();
+            const cliente = await Clientes.findAll();
+            if(!cliente){
+                return null;
+            }
         } catch (error) {
             throw new Error ('Ocorreu um erro ao criar cliente.');
         }

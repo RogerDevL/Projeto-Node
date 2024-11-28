@@ -8,7 +8,7 @@ const administradorService = {
 
             return await Admin.create({
                 nome: admin.nome,
-                email: admin.emailm,
+                email: admin.email,
                 idade: admin.idade,
                 senha: senhaCripto
             });

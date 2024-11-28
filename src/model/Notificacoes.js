@@ -11,11 +11,11 @@ const Notificacoes = sequelize.define('Notificacoes',{
             key:'id'
         }
     },
-    Mensagem:{
+    mensagem:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    Data_notificacao:{
+    data_notificacao:{
         type:DataTypes.DATE
     }
 },{
