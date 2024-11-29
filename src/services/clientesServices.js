@@ -1,11 +1,14 @@
 const Clientes = require("../model/Clientes")
 
 const clientesServices = {
-    create: async (cliente) => {
+    create: async (client) => {
         try {
-            return await Clientes.create(cliente);
+              
+            return await Clientes.create({
+                nome: client.nome,
+                email: client.email
+              });
         } catch (error) {
-            console.log(error)
             throw new Error('Ocorreu um erro ao criar cliente.');
         }
     },
@@ -40,6 +43,7 @@ const clientesServices = {
             if(!cliente){
                 return null;
             }
+            return cliente;
         } catch (error) {
             throw new Error ('Ocorreu um erro ao criar cliente.');
         }

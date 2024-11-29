@@ -24,7 +24,11 @@ const contasServices = {
     },
     getById:async (id) =>{
         try {
-            
+            const conta = await Contas.findByPk(id);
+            if(!conta){
+                return null;
+            }
+            return conta;
         } catch (error) {
             throw new Error ('Ocorreu um erro ao buscar conta.');
         }

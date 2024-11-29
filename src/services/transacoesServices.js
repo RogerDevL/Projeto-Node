@@ -1,9 +1,15 @@
 const Transacoes = require("../model/Transacoes")
 
 const transacoesServices = {
-    create: async(transacoes) =>{
+    create: async(transacao) =>{
         try {
-            return await Transacoes.create(transacoes);
+            return await Transacoes.create({
+                ID_Conta: transacao.id_conta,
+                tipo: transacao.tipo,
+                tipo_Transacao: transacao.tipo_Transacao,
+                valor:transacao.valor,
+                data_Transacao:transacao.data_Transacao
+            })
         } catch (error) {
             throw new Error ('Ocorreu um erro ao realizar uma transação');
         }

@@ -24,7 +24,7 @@ const notificacoesController = {
     getAll: async(req,res)=>{
         try {
             const noti = await notificacaoService.getAll();
-            return req.status(200).json({msg:"Notificações: ", noti})
+            return res.status(200).json({msg:"Notificações: ", noti})
         } catch (error) {
             return res.status(500).json({msg:"Contate o suporte."});
         }

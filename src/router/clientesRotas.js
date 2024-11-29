@@ -12,4 +12,4 @@ router.get('/:id', clienteController.getOne);
 
 router.get('/', clienteController.getAll);
 
-module.exports = router
+module.exports = router;

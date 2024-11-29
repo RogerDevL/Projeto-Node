@@ -24,11 +24,10 @@ const administradorService = {
             if(!admin){
                 return null;
             }
-
             await admin.update({
-                nome: admin.nome,
-                email: admin.email,
-                idade: admin.idade,
+                nome: adminToUpdate.nome,
+                email: adminToUpdate.email,
+                idade: adminToUpdate.idade,
                 senha: senhaCripto
             });
 

@@ -6,16 +6,17 @@ const transacaoController = {
             const transacao = await transacoesServices.create(req.body);
             return res.status(200).json({msg:"Transação criada.", transacao})
         } catch (error) {
+            console.log(error);
             return res.status(500).json({msg:"Contate o suporte."});
         }
     },
     update: async(req,res)=>{
         try {
-            const transacao = await transacoesServices.update(req.body, req.params.id);
+            const transacao = await transacoesServices.update(req.params.id, req.body);
             if(!transacao){
                 return res.status(400).json({msg:"Transação não existe.", transacao});
             }
-            return req.status(200).json({msg:"Transação atualizada.", transacao});
+            return res.status(200).json({msg:"Transação atualizada.", transacao});
         } catch (error) {
             return res.status(500).json({msg:"Contate o suporte."});
         }
