@@ -1,9 +1,10 @@
 const {Router} = require('express');
 const adminController = require('../controller/adminController');
+const { validateAdmin, validateAdminId } = require('../middlewares/validateAdmin');
 const router = Router();
 
 
-router.post('/', adminController.create);
+router.post('/', validateAdmin, validateAdminId, adminController.create);
 
 router.put('/:id', adminController.update);
 
