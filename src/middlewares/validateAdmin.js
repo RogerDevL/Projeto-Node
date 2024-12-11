@@ -22,7 +22,7 @@ const validateAdmin = (req, res, next) =>{
 const validateAdminId = (req,res, next) =>{
     const {id} = req.params;
 
-    if(!id || typeof id !== 'number'){
+    if(!id || typeof id !== 'string'){
         return res.status(400).json({msg:"Parametro ID inválido."});
     }
     next();

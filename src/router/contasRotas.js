@@ -1,16 +1,17 @@
 const {Router} = require('express');
 const contaController = require('../controller/contaController');
+const { validateConta, validateContaId } = require('../middlewares/validateContas');
 
 const router = Router();
 
 
-router.post('/', contaController.create);
+router.post('/', validateConta, contaController.create);
 
-router.put('/:id', contaController.update);
+router.put('/:id', validateConta, validateContaId, contaController.update);
 
-router.get('/:id', contaController.getOne);
+router.get('/:id', validateContaId, contaController.getOne);
 
-router.delete('/:id', contaController.delete);
+router.delete('/:id', validateContaId, contaController.delete);
  
 router.get('/', contaController.getAll);
 

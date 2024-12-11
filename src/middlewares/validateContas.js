@@ -6,7 +6,7 @@ const validateConta = (req,res,next) =>{
     }
 
     if(!Saldo || !ID_Cliente){
-        return res.status(400).json({msg:"Por favor preencha o campo Saldo."})
+        return res.status(400).json({msg:"Por favor preencha todos os campos.."})
     }
 
     next();
@@ -15,7 +15,7 @@ const validateConta = (req,res,next) =>{
 const validateContaId = (req,res,next) =>{
     const {id} = req.params;
 
-    if(!id || typeof id !== 'number'){
+    if(!id || typeof id !== 'string'){
         return res.status(400).json({msg:"Parametro ID inválido"})
     }
 

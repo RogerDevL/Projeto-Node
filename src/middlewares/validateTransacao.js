@@ -15,7 +15,7 @@ const validateTransacao = (req,res,next) =>{
 const validateTransacaoId = (req, res, next) =>{
     const {id} = req.params;
 
-    if(!id || typeof id !== 'number'){
+    if(!id || typeof id !== 'string'){
         return res.status(400).json({msg:"Parametro ID inválido"})
     }
 

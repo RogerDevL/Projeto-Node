@@ -4,13 +4,13 @@ const { validateAdmin, validateAdminId } = require('../middlewares/validateAdmin
 const router = Router();
 
 
-router.post('/', validateAdmin, validateAdminId, adminController.create);
+router.post('/', validateAdmin, adminController.create);
 
-router.put('/:id', adminController.update);
+router.put('/:id', validateAdminId, validateAdmin, adminController.update);
 
-router.get('/:id', adminController.getById);
+router.get('/:id', validateAdminId, adminController.getById);
 
-router.delete('/:id', adminController.delete);
+router.delete('/:id', validateAdminId, adminController.delete);
 
 router.get('/', adminController.getAll);
 
